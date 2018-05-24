@@ -1,9 +1,9 @@
-<%- include public/header.ejs%>
+<%- include ../public/header.ejs%>
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        <%- include public/asideLeft.ejs%>
+        <%- include ../public/asideLeft.ejs%>
       </div>
         <div class="col-sm-10">
           <ol class="breadcrumb">
@@ -49,12 +49,17 @@
                 <%for(let i = 0; i < list.length; i++){%>
                 <tr>
                   <td><%=i+1%></td>
-                  <td>图标</td>
+                  <td>
+                    <img width="40" height="30" src="/<%=list[i].picUrl%>" />
+                  </td>
                   <td><%=list[i].title%></td>
                   <td><%=list[i].price/100%>元</td>
                   <td><%=list[i].fee/100%>元</td>
 
-                  <td class="text-center">修改 删除</td>
+                  <td class="text-center">
+                    <a href="/admin/product/edit?id=<%=list[i]._id%>" class="btn btn-success">修改</a>
+                    <a href="/admin/product/delete?id=<%=list[i]._id%>" class="btn btn-danger">删除</a>
+                  </td>
                 </tr>
                 <%}%>
               </tbody>

@@ -1,9 +1,9 @@
-<%- include public/header.ejs%>
+<%- include ../public/header.ejs%>
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        <%- include public/asideLeft.ejs%>
+        <%- include ../public/asideLeft.ejs%>
       </div>
       <div class="col-sm-10">
         <ol class="breadcrumb">
@@ -19,25 +19,28 @@
           </div>
           <div class="panel-body">
             <div class="table-responsive input-form">
-              <form action="/doAdd" method="post">
+              <form action="/admin/product/doEdit" method="post" enctype="multipart/form-data">
                 <ul>
+                    <input type="hidden" name="_id" value="<%=list[0]._id%>"/>
                   <li> 商品名称:
-                    <input type="text" name="title" />
+                    <input type="text" name="title" value="<%=list[0].title%>"/>
                   </li>
 
                   <li> 商品图片:
-                    <input type="file" name="pic" />
+                    <input type="file" name="pic" value="<%=list[0].picUrl%>" />
+                    <br>
+                         <img width="50" src="/<%=list[0].picUrl%>" alt="">
                   </li>
                   <li> 商品价格:
-                    <input type="text" name="price" />
+                    <input type="text" name="price" value="<%=list[0].price%>" />
                   </li>
                   <li> 商品邮费:
-                    <input type="text" name="fee" />
+                    <input type="text" name="fee" value="<%=list[0].fee%>" />
                   </li>
 
                   <li>
                     商品描述:
-                    <textarea name="description" id="" cols="60" rows="8"></textarea>
+                    <textarea name="description" id="" cols="60" rows="8"><%=list[0].description%></textarea>
                   </li>
 
                   <li>
